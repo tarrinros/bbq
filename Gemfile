@@ -8,7 +8,6 @@ gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
-gem 'rails_12factor'
 gem 'uglifier'
 
 
@@ -22,10 +21,6 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-end
-
-group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
