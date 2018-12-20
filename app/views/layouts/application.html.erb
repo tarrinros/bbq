@@ -46,7 +46,7 @@
           <span class="icon-bar"></span>
         </button>
 
-        <%= link_to 'BBQ!', root_path, class: 'navbar-brand' %>
+        <%= link_to t('app.name'), root_path, class: 'navbar-brand' %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
@@ -61,6 +61,8 @@
       </div>
     </div>
 
+
+
     <div class="container">
       <div class="row">
         <div class="col-lg-9">
@@ -72,7 +74,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2018</p>
+        <p>&copy; <%= t('app.company') %> 2018</p>
       </footer>
 
     </div> <!-- /container -->
