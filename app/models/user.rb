@@ -14,6 +14,9 @@ class User < ApplicationRecord
 
   after_commit :link_subscriptions, on: :create
 
+  # Mounts Carrierwave uploader for Avatar
+  mount_uploader :avatar, AvatarUploader
+
   private
 
   def set_name
