@@ -1,58 +1,43 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:create, :destroy]
 
-  # GET /photos
-  def index
-    @photos = Photo.all
-  end
-
-  # GET /photos/1
-  def show
-  end
-
-  # GET /photos/new
-  def new
-    @photo = Photo.new
-  end
-
-  # GET /photos/1/edit
-  def edit
-  end
+  before_action :set_photo, only: [:destroy]
 
   # POST /photos
   def create
-    @photo = Photo.new(photo_params)
+    @new_photo = @event.photos.build(photo_params)
+    @new_photo.user = current_user
 
-    if @photo.save
-      redirect_to @photo, notice: 'Photo was successfully created.'
+    if @new_photo.save
+      redirect_to @event, notice: I18n.t('controllers.photos.created')
     else
-      render :new
+      render 'events/show', alert: I18n.t('controllers.photos.error')
     end
   end
 
-  # PATCH/PUT /photos/1
-  def update
-    if @photo.update(photo_params)
-      redirect_to @photo, notice: 'Photo was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /photos/1
+  # DELETE /comments/1
   def destroy
-    @photo.destroy
-    redirect_to photos_url, notice: 'Photo was successfully destroyed.'
+    message = {norice: I18n.t('controllers.photos.destroyed')}
+
+    if current_user_can_edit?(@photo)
+      @photo.destroy!
+    else
+      message = {alert: I18n.t('controllers.photos.error')}
+    end
+
+    redirect_to @event, message
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_photo
-      @photo = Photo.find(params[:id])
+    def set_event
+      @event = Event.find(params[:event_id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    def set_photo
+      @photo = @event.photos.find(params[:id])
+    end
+
     def photo_params
-      params.fetch(:photo, {})
+      params.fetch(:photo, {}).permit(:photo)
     end
 end
