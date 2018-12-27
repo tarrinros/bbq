@@ -3,8 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'fog', '~> 1.27', require: 'fog/rackspace/storage'
-gem 'carrierwave'
+gem 'carrierwave', '1.2.2'
 gem 'devise'
 gem 'devise-i18n'
 gem 'jquery-rails'
@@ -28,6 +27,7 @@ group :development do
 end
 
 group :production do
+  gem 'fog', '1.42'
   gem 'pg'
 end
 
