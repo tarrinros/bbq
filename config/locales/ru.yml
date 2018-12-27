@@ -5,6 +5,9 @@ ru:
     models:
       user: 'Пользователь'
       event: 'Событие'
+      photo: 'Фотография'
+      comment: 'Комментарий'
+      subscription: 'Подписка'
 
     # Перевод названий аттрибутов моделей
     attributes:
@@ -19,6 +22,14 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+      photo:
+        photo: 'Фотография'
+      comment:
+        user_name: 'Ваше имя'
+        body: 'Ваш комментарий'
+      subscription:
+        user_name: 'Ваше имя'
+        user_email: 'Ваш email'
 
   # Перевод сообщений, которые отправляет контроллер
   controllers:
@@ -47,6 +58,7 @@ ru:
     name: 'Шашлыки'
     company: 'Хороший программист'
 
+  # Перевод для подтверждений об удалении
   comments:
     comment:
       destroy_confirm: 'Вы уверены, что хотите удалить этот комментарий?'
@@ -59,6 +71,7 @@ ru:
     photo:
       destroy_confirm: 'Вы уверены, что хотите удалить эту фоточку?'
 
+ # Перевод для склонения поля ошибок
   errors_count:
     one: '%{count} ошибка'
     few: '%{count} ошибки'
