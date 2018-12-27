@@ -71,9 +71,26 @@ ru:
     photo:
       destroy_confirm: 'Вы уверены, что хотите удалить эту фоточку?'
 
- # Перевод для склонения поля ошибок
+  # Перевод для склонения поля ошибок
   errors_count:
     one: '%{count} ошибка'
     few: '%{count} ошибки'
     many: '%{count} ошибок'
+
+  # Перевод для почтовой рассылки
+  event_mailer:
+    comment:
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    subscription:
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
 
