@@ -375,10 +375,10 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  carrierwave (= 1.2.2)
+  carrierwave
   devise
   devise-i18n
-  fog (= 1.42)
+  fog
   jquery-rails
   listen
   pg
