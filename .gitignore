@@ -36,6 +36,3 @@ public/uploads/
 
 # Ignore application configuration
 /config/application.yml
-
-# Ignore master key for credentials encryption
-/config/master.key

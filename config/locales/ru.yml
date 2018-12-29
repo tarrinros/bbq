@@ -31,6 +31,14 @@ ru:
         user_name: 'Ваше имя'
         user_email: 'Ваш email'
 
+    # Translation for email presence while event subscription
+    errors:
+      models:
+        subscription:
+          attributes:
+            user_email:
+              email_presence: 'уже занят'
+
   # Перевод сообщений, которые отправляет контроллер
   controllers:
     events:
