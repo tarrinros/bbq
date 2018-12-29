@@ -101,4 +101,9 @@ ru:
       event: 'Событие'
       datetime: 'Состоится'
       owner: 'Организатор'
+    photo:
+      title: 'Новая фоточка'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Добавлена'
 

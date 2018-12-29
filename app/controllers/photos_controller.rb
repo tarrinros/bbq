@@ -9,6 +9,8 @@ class PhotosController < ApplicationController
     @new_photo.user = current_user
 
     if @new_photo.save
+      notify_subscribers(@event, @new_photo)
+
       redirect_to @event, notice: I18n.t('controllers.photos.created')
     else
       render 'events/show', alert: I18n.t('controllers.photos.error')
@@ -29,15 +31,29 @@ class PhotosController < ApplicationController
   end
 
   private
-    def set_event
-      @event = Event.find(params[:event_id])
-    end
 
-    def set_photo
-      @photo = @event.photos.find(params[:id])
-    end
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
 
-    def photo_params
-      params.fetch(:photo, {}).permit(:photo)
+  def set_photo
+    @photo = @event.photos.find(params[:id])
+  end
+
+  def photo_params
+    params.fetch(:photo, {}).permit(:photo)
+  end
+
+  def notify_subscribers(event, photo)
+    # All subscribers email array by uniqness
+    all_emails = (event.subscriptions.map(&:user_email) + [event.user.email]).uniq
+
+    # Deletes author of the photo from array
+    all_emails.delete_if {|email| email == current_user.email}
+
+    # Send mails by each email in array
+    all_emails.each do |mail|
+      EventMailer.photo(event, photo, mail).deliver_now
     end
+  end
 end

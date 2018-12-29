@@ -32,15 +32,15 @@ class SubscriptionsController < ApplicationController
 
   private
 
-    def set_event
-      @event = Event.find(params[:event_id])
-    end
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
 
-    def set_subscription
-      @subscription = @event.subscriptions.find(params[:id])
-    end
+  def set_subscription
+    @subscription = @event.subscriptions.find(params[:id])
+  end
 
-    def subscription_params
-      params.fetch(:subscription, {}).permit(:user_name, :user_email)
-    end
+  def subscription_params
+    params.fetch(:subscription, {}).permit(:user_name, :user_email)
+  end
 end
