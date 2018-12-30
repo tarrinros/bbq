@@ -9,6 +9,8 @@ class PhotosController < ApplicationController
     @new_photo.user = current_user
 
     if @new_photo.save
+
+      # Method for notification subscribers about new photos
       notify_subscribers(@event, @new_photo)
 
       redirect_to @event, notice: I18n.t('controllers.photos.created')
@@ -49,7 +51,7 @@ class PhotosController < ApplicationController
     all_emails = (event.subscriptions.map(&:user_email) + [event.user.email]).uniq
 
     # Deletes author of the photo from array
-    all_emails.delete_if {|email| email == current_user.email}
+    all_emails.delete_if { |email| email == current_user.email }
 
     # Send mails by each email in array
     all_emails.each do |mail|

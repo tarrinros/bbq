@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_can_edit?
 
+
   def configure_permitted_parameters
     # .for method was changed by the .permit method for devise version >= 4
     devise_parameter_sanitizer.permit(:account_update) { |u|
@@ -12,6 +13,6 @@ class ApplicationController < ActionController::Base
 
   def current_user_can_edit?(model)
     user_signed_in? &&
-      (model.user == current_user || (model.try(:event).present? && model.event.user == current_user))
+    (model.user == current_user || (model.try(:event).present? && model.event.user == current_user))
   end
 end
