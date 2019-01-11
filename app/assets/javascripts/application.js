@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require twitter/bootstrap/alert
 //= require activestorage
+//= require ekko-lightbox
 //= require_tree .
