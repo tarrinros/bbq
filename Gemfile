@@ -14,6 +14,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'rmagick'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'uglifier', '~> 3.0.4'
+gem 'rails_admin'
 
 
 group :development, :test do
