@@ -40,7 +40,7 @@ ru:
             user_email:
               email_presence: 'уже занят'
 
-  # Перевод сообщений, которые отправляет контроллер
+  # Controller messages translation
   controllers:
     events:
       created: 'Вы создали новое мероприятие'
@@ -64,12 +64,12 @@ ru:
       photo_destroy: 'Точно удалить фотографию?'
 
 
-  # Перевод названия приложения и компании-разработчика
+  # Company title and application title translation
   app:
     name: 'Шашлыки'
     company: 'Alexander Smirnov'
 
-  # Перевод для подтверждений об удалении
+  # Deletion confirmation translation
   comments:
     comment:
       destroy_confirm: 'Вы уверены, что хотите удалить этот комментарий?'
@@ -82,13 +82,13 @@ ru:
     photo:
       destroy_confirm: 'Вы уверены, что хотите удалить эту фоточку?'
 
-  # Перевод для склонения поля ошибок
+  # Errors declension
   errors_count:
     one: '%{count} ошибка'
     few: '%{count} ошибки'
     many: '%{count} ошибок'
 
-  # Перевод для почтовой рассылки
+  # Mail sending
   event_mailer:
     comment:
       title: 'Новый комментарий'

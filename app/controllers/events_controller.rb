@@ -67,6 +67,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :address, :description, :datetime, :pincode)
   end
 
+  # Access to events with pincode
   def password_guard!
     return true if @event.pincode.blank?
     return true if signed_in? && current_user == @event.user
