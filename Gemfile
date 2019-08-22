@@ -20,7 +20,10 @@ group :development, :test do
   gem 'awesome_rails_console'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'listen'
+<<<<<<< HEAD
   gem 'rspec-rails', '~> 3.6.0'
+=======
+>>>>>>> aff6d85b64fdb333113e489440dac05d2578ca50
   gem 'sqlite3', '~> 1.3.6'
 end
 
