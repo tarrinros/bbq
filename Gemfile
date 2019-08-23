@@ -25,6 +25,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'spring-commands-rspec'
   gem 'web-console', '>= 3.3.0'
 end
 
