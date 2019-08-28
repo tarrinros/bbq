@@ -20,13 +20,16 @@ group :development, :test do
   gem 'awesome_rails_console'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
-  gem 'guard'
+  gem 'fuubar'
   gem 'listen'
+  gem 'pry'
+  gem 'rb-readline'
   gem 'rspec-rails', '~> 3.6.0'
   gem 'sqlite3', '~> 1.3.6'
 end
 
 group :development do
+  gem 'guard-rspec', require: false
   gem 'spring-commands-rspec'
   gem 'web-console', '>= 3.3.0'
 end

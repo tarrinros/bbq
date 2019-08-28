@@ -6,8 +6,8 @@ RSpec.describe Event, type: :model do
     name: "Vanya",
     email: "tester@example.com",
     password: "dottle-nouveau-pavilion-tights-furze"
-  )
-}
+    )
+  }
 
   it "is valid with a user, title, address and datetime" do
     event = Event.new(
