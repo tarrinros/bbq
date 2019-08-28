@@ -19,6 +19,8 @@ gem 'uglifier', '~> 3.0.4'
 group :development, :test do
   gem 'awesome_rails_console'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'guard'
   gem 'listen'
   gem 'rspec-rails', '~> 3.6.0'
   gem 'sqlite3', '~> 1.3.6'
