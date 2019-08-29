@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.6.3'
 
 gem 'carrierwave'
 gem 'devise'
@@ -16,18 +16,21 @@ gem 'rmagick'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'uglifier', '~> 3.0.4'
 
-
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'awesome_rails_console'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'fuubar'
   gem 'listen'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'pry'
+  gem 'rb-readline'
+  gem 'rspec-rails', '~> 3.6.0'
   gem 'sqlite3', '~> 1.3.6'
 end
 
 group :development do
+  gem 'guard-rspec', require: false
+  gem 'spring-commands-rspec'
   gem 'web-console', '>= 3.3.0'
 end
 
