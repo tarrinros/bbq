@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.2'
 
 gem 'carrierwave'
 gem 'devise'
@@ -25,6 +25,7 @@ group :development, :test do
   gem 'pry'
   gem 'rb-readline'
   gem 'rspec-rails', '~> 3.6.0'
+  gem 'shoulda-matchers'
   gem 'sqlite3', '~> 1.3.6'
 end
 
