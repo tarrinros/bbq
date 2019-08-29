@@ -1,12 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  let(:user) { User.new(
-    name: "Vanya",
-    email: "tester@example.com",
-    password: "dottle-nouveau-pavilion-tights-furze"
-    )
-  }
+  let(:user) { FactoryBot.create :user }
 
   it "is valid with a user, title, address and datetime" do
     event = Event.new(
