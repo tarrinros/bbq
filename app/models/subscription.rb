@@ -12,7 +12,6 @@ class Subscription < ApplicationRecord
   validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
 
-
   def email_in_db_presence
     errors.add(:user_email, :email_presence) if User.exists?(email: self.user_email)
   end
