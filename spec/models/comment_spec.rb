@@ -5,19 +5,24 @@ RSpec.describe Comment, type: :model do
   let(:event) { FactoryBot.create(:event, user: user) }
   let(:comment) { FactoryBot.create(:comment, user: user, event: event) }
 
-  it "is valid with a body, event, user_name" do
+  it 'is valid with a body, event, user_name' do
     expect(comment).to be_valid
   end
 
-  it "is invalid without a body" do
+  it 'is invalid without a body' do
     comment.body = nil
     comment.valid?
-    expect(comment.errors[:body]).to include("не может быть пустым")
+    expect(comment.errors[:body]).to include('не может быть пустым')
   end
 
-  it "is invalid without a event" do
+  it 'is invalid without a event' do
     comment.event = nil
     comment.valid?
-    expect(comment.errors[:event]).to include("не может отсутствовать")
+    expect(comment.errors[:event]).to include('не может отсутствовать')
+  end
+
+  it 'returns user_name as string' do
+    user.name = 'Tester Testerov'
+    expect(comment.user_name).to eq 'Tester Testerov'
   end
 end
