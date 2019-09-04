@@ -5,7 +5,6 @@ RSpec.describe Subscription, type: :model do
   let(:event) { FactoryBot.create(:event, user: user) }
   let(:subscription) { FactoryBot.create(:subscription, user: user, event: event) }
 
-
   it 'is valid with a event, user_name, user_email' do
     expect(subscription).to be_valid
   end

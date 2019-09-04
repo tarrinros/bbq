@@ -14,25 +14,15 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without an email address' do
-    user = User.new(email: nil)
+    user = FactoryBot.build(:user, email: nil)
     user.valid?
     expect(user.errors[:email]).to include('не может быть пустым')
   end
 
   it 'is invalid with a duplicate email address' do
-    User.create(
-      name: 'Alex',
-      email: 'tester@example.com',
-      password: 'dottle-nouveau-pavilion-tights-furze',
-      )
-      
-      user = User.new(
-      name: 'Gosha',
-      email: 'tester@example.com',
-      password: 'dottle-nouveau-pavilion-tights-furze',
-      )
-      
-      user.valid?
-      expect(user.errors[:email]).to include('уже существует')
+    FactoryBot.create(:user, email: 'tester@example.com')
+    user = FactoryBot.build(:user, email: "tester@example.com")
+    user.valid?
+    expect(user.errors[:email]).to include('уже существует')
   end
 end
