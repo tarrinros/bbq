@@ -29,7 +29,7 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe '#new' do
-    context 'when user is logged in' do
+    context 'as logged in user' do
       before(:each) { sign_in user }
 
       it 'returns a 200 response' do
@@ -43,7 +43,7 @@ RSpec.describe EventsController, type: :controller do
       end
     end
 
-    context 'when user is not logged in' do
+    context 'as a guest' do
       it 'returns a 302 response' do
         get :new
         expect(response).to have_http_status '302'
@@ -51,6 +51,32 @@ RSpec.describe EventsController, type: :controller do
 
       it 'redirects to the sign-in page' do
         get :new
+        expect(response).to redirect_to '/users/sign_in'
+      end
+    end
+  end
+
+  describe '#create' do
+    context 'as logged in user' do
+      it 'adds a event' do
+        event_params = FactoryBot.attributes_for(:event)
+        sign_in user
+        expect {
+          post :create, params: { event: event_params }
+        }.to change(user.events, :count).by(1)
+      end
+    end
+
+    context 'as a guest' do
+      it 'returns a 302 response' do
+        event_params = FactoryBot.attributes_for(:event)
+        post :create, params: {event: event_params }
+        expect(response).to have_http_status '302'
+      end
+
+      it 'redirects to the sign-in page' do
+        event_params = FactoryBot.attributes_for(:event)
+        post :create, params: {event: event_params }
         expect(response).to redirect_to '/users/sign_in'
       end
     end
