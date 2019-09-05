@@ -20,8 +20,8 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid with a duplicate email address' do
-    FactoryBot.create(:user, email: "tester@example.com")
-    user = FactoryBot.build(:user, email: "tester@example.com")
+    FactoryBot.create(:user, email: 'tester@example.com')
+    user = FactoryBot.build(:user, email: 'tester@example.com')
     user.valid?
     expect(user.errors[:email]).to include('уже существует')
   end
@@ -29,8 +29,8 @@ RSpec.describe User, type: :model do
   it 'generates users name before validation' do
     user = User.create(
       name: nil,
-      email: "tester@example.com",
-      password: "dottle-nouveau-pavilion-tights-furze"
+      email: 'tester@example.com',
+      password: 'dottle-nouveau-pavilion-tights-furze'
     )
     user.valid?
     expect(user.name).not_to be_empty
