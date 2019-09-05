@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
-  let(:event) { FactoryBot.create :event }
   let(:user) { FactoryBot.create :user }
+  let(:event) { FactoryBot.create :event, user: user }
 
   describe '#index' do
     it 'responds successfully' do
@@ -62,7 +62,7 @@ RSpec.describe EventsController, type: :controller do
         event_params = FactoryBot.attributes_for(:event)
         sign_in user
         expect {
-          post :create, params: { event: event_params }
+          post :create, params: {event: event_params}
         }.to change(user.events, :count).by(1)
       end
     end
@@ -70,14 +70,26 @@ RSpec.describe EventsController, type: :controller do
     context 'as a guest' do
       it 'returns a 302 response' do
         event_params = FactoryBot.attributes_for(:event)
-        post :create, params: {event: event_params }
+        post :create, params: {event: event_params}
         expect(response).to have_http_status '302'
       end
 
       it 'redirects to the sign-in page' do
         event_params = FactoryBot.attributes_for(:event)
-        post :create, params: {event: event_params }
+        post :create, params: {event: event_params}
         expect(response).to redirect_to '/users/sign_in'
+      end
+    end
+  end
+
+  describe '#update' do
+    context 'as logged in user' do
+      it 'updates a event' do
+        event_params = FactoryBot.attributes_for(:event,
+                                                 title: "New events title")
+        sign_in user
+        patch :update, params: {id: event.id, event: event_params}
+        expect(event.reload.title).to eq "New events title"
       end
     end
   end
