@@ -11,9 +11,9 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to be_successful
     end
 
-    it "returns a 200 response" do
+    it 'returns a 200 response' do
       get :show
-      expect(response).to have_http_status "200"
+      expect(response).to have_http_status '200'
     end
   end
 end
