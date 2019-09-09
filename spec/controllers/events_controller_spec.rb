@@ -29,7 +29,7 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe '#new' do
-    context 'as logged in user' do
+    context 'logged in user' do
       before(:each) { sign_in user }
 
       it 'returns a 200 response' do
@@ -43,7 +43,7 @@ RSpec.describe EventsController, type: :controller do
       end
     end
 
-    context 'as a guest' do
+    context 'guest' do
       it 'returns a 302 response' do
         get :new
         expect(response).to have_http_status '302'
@@ -57,7 +57,7 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe '#create' do
-    context 'as logged in user' do
+    context 'logged in user' do
       it 'adds a event' do
         event_params = FactoryBot.attributes_for(:event)
         sign_in user
@@ -67,7 +67,7 @@ RSpec.describe EventsController, type: :controller do
       end
     end
 
-    context 'as a guest' do
+    context 'guest' do
       it 'returns a 302 response' do
         event_params = FactoryBot.attributes_for(:event)
         post :create, params: {event: event_params}
@@ -95,7 +95,7 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe '#destroy' do
-    context 'as logged in user' do
+    context 'logged in user' do
       it 'deletes the event' do
         event = FactoryBot.create(:event, user: user)
         sign_in user
