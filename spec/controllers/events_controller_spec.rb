@@ -93,4 +93,18 @@ RSpec.describe EventsController, type: :controller do
       end
     end
   end
+
+  describe '#destroy' do
+    context 'as logged in user' do
+      it 'deletes the event' do
+        event_params = FactoryBot.attributes_for(:event)
+        sign_in user
+        expect {
+          delete :destroy, params: {event: event_params}
+        }.to change(user.events, :count).by(-1)
+        expect(response).to be_successful
+        expect(response).to have_http_status(:redirect)
+      end
+    end
+  end
 end
