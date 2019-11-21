@@ -58,12 +58,24 @@ RSpec.describe EventsController, type: :controller do
 
   describe '#create' do
     context 'logged in user' do
-      it 'adds a event' do
-        event_params = FactoryBot.attributes_for(:event)
-        sign_in user
-        expect {
-          post :create, params: {event: event_params}
-        }.to change(user.events, :count).by(1)
+      context 'with invalid attributes' do
+        it 'adds a event' do
+          event_params = FactoryBot.attributes_for(:event)
+          sign_in user
+          expect {
+            post :create, params: {event: event_params}
+          }.to change(user.events, :count).by(1)
+        end
+      end
+
+      context 'with invalid attributes' do
+        it 'does not add a event' do
+          event_params = FactoryBot.attributes_for(:event, :invalid)
+          sign_in user
+          expect {
+            post :create, params: { event: event_params}
+          }.to_not change(user.events, :count)
+        end
       end
     end
 

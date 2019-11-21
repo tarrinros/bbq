@@ -4,5 +4,9 @@ FactoryBot.define do
     title { "BBQ test event #{rand(10)} " }
     address { "Moscow, Lomonosov str. #{rand(100)}" }
     datetime { Time.now + rand(10).days }
+
+    trait :invalid do
+      title nil
+    end
   end
 end
