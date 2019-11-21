@@ -21,6 +21,6 @@ RSpec.describe Subscription, type: :model do
   end
 
   it 'returns user_email as string' do
-    expect(subscription.user_email).to eq 'tester@example.com'
+    expect(subscription.user_email).to include('@example.com')
   end
 end
